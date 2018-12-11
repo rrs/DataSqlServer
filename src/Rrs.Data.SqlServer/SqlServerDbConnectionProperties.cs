@@ -1,6 +1,6 @@
 ﻿namespace Rrs.Data.SqlServer
 {
-    public class SqlServerDbConnectionProperties
+    public class SqlServerDbConnectionProperties : IConnectionProperties
     {
         public string Server { get; }
         public string Database { get; }
