@@ -7,5 +7,11 @@
             var f = new SqlServerConnectionFactory(connectionString);
             return new DbDelegator(f, dataBus);
         }
+
+        public static DbDelegator Create(IConnectionProperties connectionProperties, IDataBus dataBus = null)
+        {
+            var f = new SqlServerConnectionFactory(connectionProperties);
+            return new DbDelegator(f, dataBus);
+        }
     }
 }
