@@ -3,23 +3,23 @@ using System.Data.SqlClient;
 
 namespace Rrs.Data.SqlServer
 {
-    public class SqlServerDbConnectionFactory : IDbConnectionFactory
+    public class SqlServerConnectionFactory : IDbConnectionFactory
     {
         private readonly string _connectionString;
 
-        public SqlServerDbConnectionFactory(string connectionString)
+        public SqlServerConnectionFactory(string connectionString)
         {
             _connectionString = connectionString;
         }
 
-        public SqlServerDbConnectionFactory(IConnectionProperties connectionPropeties)
+        public SqlServerConnectionFactory(IConnectionProperties connectionPropeties)
         {
             _connectionString = connectionPropeties.ConnectionString;
         }
 
-        public SqlServerDbConnectionFactory(string server, string database, string username = null, string password = null)
+        public SqlServerConnectionFactory(string server, string database, string username = null, string password = null)
         {
-            var connectionPropeties = new SqlServerDbConnectionProperties(server, database, username, password);
+            var connectionPropeties = new SqlServerConnectionProperties(server, database, username, password);
             _connectionString = connectionPropeties.ConnectionString;
         }
 
