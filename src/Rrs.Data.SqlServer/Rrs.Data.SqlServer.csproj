@@ -1,21 +1,29 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <Version>1.0.0.0</Version>
+    <PackageVersion>1.0.0.0</PackageVersion>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <FileVersion>1.0.0.0</FileVersion>
+    <InformationalVersion>1.0.0.0</InformationalVersion>
     <Description>Rrs.Data.SqlServer Class Library</Description>
     <Authors>Robert Snipe</Authors>
     <Copyright>Copyright (c) 2018 Robert Snipe</Copyright>
-    <TargetFramework>net40</TargetFramework>
+    <TargetFrameworks>net40;net45;netstandard20</TargetFrameworks>
     <AssemblyName>Rrs.Data.SqlServer</AssemblyName>
     <PackageId>Rrs.Data.SqlServer</PackageId>
-    <PackageTags>Data;SqlServer;Net40</PackageTags>
+    <PackageTags>Data;SqlServer;Net40;Net45;NetStadnard20</PackageTags>
     <PackageProjectUrl>https://github.com/rrs/DataSqlServer</PackageProjectUrl>
-    <Version>1.0.0</Version>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <Company>rrs</Company>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Rrs.Data" Version="1.0.19" />
+    <PackageReference Include="Rrs.Data" Version="1.1.46" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)'=='netstandard20'">
+    <PackageReference Include="System.Data.SqlClient" Version="4.6.1" />
   </ItemGroup>
 
 </Project>
