@@ -25,8 +25,8 @@
     </metadata>
 
     <files>
-        <file src="Rrs.Dapper.Fluent.Net40\bin\Release\net40\**" target="lib\net40\" />
-        <file src="Rrs.Dapper.Fluent\bin\Release\net45\**" target="lib\net45\" />
-        <file src="Rrs.Dapper.Fluent\bin\Release\netstandard20\**" target="lib\netstandard20\" />
+        <file src="Rrs.Data.SqlServer.Net40\bin\Release\net40\**" target="lib\net40\" />
+        <file src="Rrs.Data.SqlServer\bin\Release\net45\**" target="lib\net45\" />
+        <file src="Rrs.Data.SqlServer\bin\Release\netstandard20\**" target="lib\netstandard20\" />
     </files>
 </package>
