@@ -6,21 +6,28 @@ namespace Rrs.Data.SqlServer
     public partial class SqlServerConnectionFactory : IDbConnectionFactory
     {
         private readonly string _connectionString;
+        public IConnectionProperties ConnectionProperties { get; }
 
-        public SqlServerConnectionFactory(string connectionString)
+        private SqlServerConnectionFactory()
         {
-            _connectionString = connectionString;
+            _connectionString = ConnectionProperties.ConnectionString;
         }
 
-        public SqlServerConnectionFactory(IConnectionProperties connectionPropeties)
+        public SqlServerConnectionFactory(string connectionString) : this()
         {
-            _connectionString = connectionPropeties.ConnectionString;
+            var connectionStringBuilder = new SqlConnectionStringBuilder(connectionString);
+            ConnectionProperties = new SqlServerConnectionProperties(connectionStringBuilder.DataSource, connectionStringBuilder.InitialCatalog, connectionStringBuilder.UserID, connectionStringBuilder.Password);
         }
 
-        public SqlServerConnectionFactory(string server, string database, string username = null, string password = null)
+        public SqlServerConnectionFactory(IConnectionProperties connectionPropeties) : this()
+        {
+            ConnectionProperties = connectionPropeties;
+        }
+
+        public SqlServerConnectionFactory(string server, string database, string username = null, string password = null) : this()
         {
             var connectionPropeties = new SqlServerConnectionProperties(server, database, username, password);
-            _connectionString = connectionPropeties.ConnectionString;
+            ConnectionProperties = connectionPropeties;
         }
 
         public IDbConnection OpenConnection()
