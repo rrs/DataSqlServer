@@ -8,26 +8,24 @@ namespace Rrs.Data.SqlServer
         private readonly string _connectionString;
         public IConnectionProperties ConnectionProperties { get; }
 
-        private SqlServerConnectionFactory()
-        {
-            _connectionString = ConnectionProperties.ConnectionString;
-        }
-
-        public SqlServerConnectionFactory(string connectionString) : this()
+        public SqlServerConnectionFactory(string connectionString)
         {
             var connectionStringBuilder = new SqlConnectionStringBuilder(connectionString);
             ConnectionProperties = new SqlServerConnectionProperties(connectionStringBuilder.DataSource, connectionStringBuilder.InitialCatalog, connectionStringBuilder.UserID, connectionStringBuilder.Password);
+            _connectionString = ConnectionProperties.ConnectionString;
         }
 
-        public SqlServerConnectionFactory(IConnectionProperties connectionPropeties) : this()
+        public SqlServerConnectionFactory(IConnectionProperties connectionPropeties)
         {
             ConnectionProperties = connectionPropeties;
+            _connectionString = ConnectionProperties.ConnectionString;
         }
 
-        public SqlServerConnectionFactory(string server, string database, string username = null, string password = null) : this()
+        public SqlServerConnectionFactory(string server, string database, string username = null, string password = null)
         {
             var connectionPropeties = new SqlServerConnectionProperties(server, database, username, password);
             ConnectionProperties = connectionPropeties;
+            _connectionString = ConnectionProperties.ConnectionString;
         }
 
         public IDbConnection OpenConnection()
