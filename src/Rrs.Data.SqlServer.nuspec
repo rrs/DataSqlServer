@@ -9,24 +9,24 @@
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>Rrs.Data.SqlServer Class Library</description>
         <copyright>Copyright (c) 2018 Robert Snipe</copyright>
-        <tags>Data SqlServer Net40 Net45 Standard20</tags>
+        <tags>Data SqlServer Net40 Net452 Standard20</tags>
         <dependencies>
 	      <group targetFramework=".NETFramework4.0">
           <dependency id="Rrs.Data" version="1.1.51" exclude="Build,Analyzers" />
 	      </group>
-        <group targetFramework=".NETFramework4.5">
+        <group targetFramework=".NETFramework4.5.2">
           <dependency id="Rrs.Data" version="1.1.51" exclude="Build,Analyzers" />
         </group>
         <group targetFramework=".NETStandard2.0">
           <dependency id="Rrs.Data" version="1.1.51" exclude="Build,Analyzers" />
-          <dependency id="System.Data.SqlClient" version="4.7.0" exclude="Build,Analyzers" />
+          <dependency id="System.Data.SqlClient" version="4.8.0" exclude="Build,Analyzers" />
         </group>
 	    </dependencies>
     </metadata>
 
     <files>
         <file src="Rrs.Data.SqlServer.Net40\bin\Release\net40\**" target="lib\net40\" />
-        <file src="Rrs.Data.SqlServer\bin\Release\net45\**" target="lib\net45\" />
+        <file src="Rrs.Data.SqlServer\bin\Release\net452\**" target="lib\net452\" />
         <file src="Rrs.Data.SqlServer\bin\Release\netstandard20\**" target="lib\netstandard20\" />
     </files>
 </package>

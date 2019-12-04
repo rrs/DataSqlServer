@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net45;netstandard20</TargetFrameworks>
+    <TargetFrameworks>net452;netstandard20</TargetFrameworks>
   </PropertyGroup>
 
   <ItemGroup Condition="'$(TargetFramework)'=='netstandard20'">
@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <PackageReference Include="Rrs.Data" Version="1.1.51" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.0" />
   </ItemGroup>
 
   <Import Project="..\Rrs.Data.SqlServer.Shared\Rrs.Data.SqlServer.Shared.projitems" Label="Shared" />
