@@ -44,9 +44,16 @@ namespace Rrs.Data.SqlServer
 
             void dependencyCallback(object o, SqlNotificationEventArgs e)
             {
-                if (e.Type == SqlNotificationType.Subscribe) onError?.Invoke(e.Info);
                 dependency.OnChange -= dependencyCallback;
-                onChangeCallback();
+
+                if (e.Type == SqlNotificationType.Subscribe)
+                {
+                    onError?.Invoke(e.Info);
+                }
+                else
+                {
+                    onChangeCallback();
+                }
             }
 
             dependency.OnChange += dependencyCallback;
