@@ -9,6 +9,9 @@
     <Import_RootNamespace>Rrs.Data.SqlServer</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)DbDelegatorExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SqlConnectionWithDependency.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SqlNotification.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SqlServerConnectionFactory.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SqlServerConnectionProperties.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SqlServerDelegatorFactory.cs" />
