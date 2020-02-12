@@ -1,5 +1,4 @@
-﻿using Rrs.Data;
-using System;
+﻿using System;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -60,5 +59,4 @@ namespace Rrs.Data.SqlServer
             return dbDelegator.Execute((c, o) => command(c, o.Item1, o.Item2, o.Item3, o.Item4), new Tuple<TIn1, TIn2, TIn3, TIn4>(parameter1, parameter2, parameter3, parameter4), onChangeCallback, onError);
         }
     }
-
 }
