@@ -12,13 +12,13 @@
         <tags>Data SqlServer Net40 Net452 Standard20</tags>
         <dependencies>
 	      <group targetFramework=".NETFramework4.0">
-          <dependency id="Rrs.Data" version="1.1.51" exclude="Build,Analyzers" />
+          <dependency id="Rrs.Data" version="1.1.52" exclude="Build,Analyzers" />
 	      </group>
         <group targetFramework=".NETFramework4.5.2">
-          <dependency id="Rrs.Data" version="1.1.51" exclude="Build,Analyzers" />
+          <dependency id="Rrs.Data" version="1.1.52" exclude="Build,Analyzers" />
         </group>
         <group targetFramework=".NETStandard2.0">
-          <dependency id="Rrs.Data" version="1.1.51" exclude="Build,Analyzers" />
+          <dependency id="Rrs.Data" version="1.1.52" exclude="Build,Analyzers" />
           <dependency id="System.Data.SqlClient" version="4.8.0" exclude="Build,Analyzers" />
         </group>
 	    </dependencies>
