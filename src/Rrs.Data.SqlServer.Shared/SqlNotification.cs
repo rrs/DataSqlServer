@@ -38,64 +38,7 @@ namespace Rrs.Data.SqlServer
                 return command(connection, parameter);
             }
         }
-
-        //public static void Execute<T>(IDbConnection c, Func<IDbConnection, T> command, Action<T> onChangeCallback, Action<string> onError, TimeSpan retryInterval)
-        //{
-        //    void restart()
-        //    {
-        //        Timer timer = null;
-        //        timer = new Timer(_ =>
-        //        {
-        //            timer.Dispose();
-        //            try
-        //            {
-        //                SqlDependency.Stop(c.ConnectionString);
-        //                SqlDependency.Start(c.ConnectionString);
-        //                monitor();
-        //            }
-        //            catch (Exception e)
-        //            {
-        //                onError(e.Message);
-        //                restart();
-        //            }
-        //        });
-
-        //        timer.Change(Math.Max((int)retryInterval.TotalMilliseconds, 0), Timeout.Infinite);
-        //    }
-
-        //    void onSqlDependencyError(SqlNotificationInfo info)
-        //    {
-        //        try
-        //        {
-        //            onError(info.ToString());
-        //            restart();
-        //        }
-        //        catch (Exception e)
-        //        {
-        //            onError(e.Message);
-        //        }
-        //    }
-
-        //    void monitor()
-        //    {
-        //        try
-        //        {
-        //            using (var connection = SetupSqlDependency(c, monitor, onSqlDependencyError))
-        //            {
-        //                var result = command(connection);
-        //                onChangeCallback(result);
-        //            }
-        //        }
-        //        catch (Exception e)
-        //        {
-        //            onError(e.Message);
-        //            restart();
-        //        }
-        //    }
-
-        //    monitor();
-        //}
-
+        
         private static SqlConnectionWithDependency SetupSqlDependency(IDbConnection c, Action onChangeCallback, Action<SqlNotificationInfo> onError)
         {
             var dependency = new SqlDependency();

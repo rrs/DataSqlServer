@@ -19,7 +19,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Rrs.Data" Version="1.1.52" />
+    <PackageReference Include="Rrs.Data" Version="1.1.54" />
   </ItemGroup>
 
   <Import Project="..\Rrs.Data.SqlServer.Shared\Rrs.Data.SqlServer.Shared.projitems" Label="Shared" />
