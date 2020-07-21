@@ -19,6 +19,8 @@ EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		Rrs.Data.SqlServer.Shared\Rrs.Data.SqlServer.Shared.projitems*{682db81d-ea15-4ac1-89cb-9a18ac3f4527}*SharedItemsImports = 13
+		Rrs.Data.SqlServer.Shared\Rrs.Data.SqlServer.Shared.projitems*{947901fc-0bec-4b06-9e50-a9623ef86412}*SharedItemsImports = 5
+		Rrs.Data.SqlServer.Shared\Rrs.Data.SqlServer.Shared.projitems*{9509edfa-e391-42a2-8bf4-ff285064841c}*SharedItemsImports = 5
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
