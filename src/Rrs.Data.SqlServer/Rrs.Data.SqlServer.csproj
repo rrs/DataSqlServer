@@ -9,8 +9,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Rrs.Data" Version="1.1.56" />
-    <PackageReference Include="System.Data.SqlClient" Version="4.8.1" />
+    <PackageReference Include="Rrs.Data" Version="1.1.58" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
   </ItemGroup>
 
   <Import Project="..\Rrs.Data.SqlServer.Shared\Rrs.Data.SqlServer.Shared.projitems" Label="Shared" />
