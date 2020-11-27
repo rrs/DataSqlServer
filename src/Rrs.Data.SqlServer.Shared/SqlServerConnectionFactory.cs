@@ -28,6 +28,8 @@ namespace Rrs.Data.SqlServer
             _connectionString = ConnectionProperties.ConnectionString;
         }
 
+        public IDbConnection NewConnection() => new SqlConnection(_connectionString);
+  
         public IDbConnection OpenConnection()
         {
             SqlConnection c = null;
