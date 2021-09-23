@@ -7,6 +7,8 @@
         public string Username { get; }
         public string Password { get; }
 
+        public bool MultipleActiveResultSets { get; set; }
+
         public SqlServerConnectionProperties(string server, string database, string username = null, string password = null)
         {
             Server = server;
@@ -19,8 +21,9 @@
         {
             get
             {
-                if (Username == null || Password == null) return $"Data Source={Server};Initial Catalog={Database};Integrated Security=SSPI;";
-                return $"Data Source={Server};Initial Catalog={Database};UID={Username};pwd={Password}";
+                var mars = MultipleActiveResultSets ? "MultipleActiveResultSets=True;" : "";
+                if (Username == null || Password == null) return $"Data Source={Server};Initial Catalog={Database};Integrated Security=SSPI;{mars}";
+                return $"Data Source={Server};Initial Catalog={Database};UID={Username};pwd={Password};{mars}";
             }
         }
     }

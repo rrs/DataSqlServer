@@ -12,7 +12,11 @@ namespace Rrs.Data.SqlServer
         public SqlServerConnectionFactory(string connectionString)
         {
             var connectionStringBuilder = new SqlConnectionStringBuilder(connectionString);
-            ConnectionProperties = new SqlServerConnectionProperties(connectionStringBuilder.DataSource, connectionStringBuilder.InitialCatalog, connectionStringBuilder.UserID, connectionStringBuilder.Password);
+            ConnectionProperties = new SqlServerConnectionProperties(
+                connectionStringBuilder.DataSource, 
+                connectionStringBuilder.InitialCatalog, 
+                connectionStringBuilder.IntegratedSecurity ? null : connectionStringBuilder.UserID,
+                connectionStringBuilder.IntegratedSecurity ? null : connectionStringBuilder.Password) { MultipleActiveResultSets = connectionStringBuilder.MultipleActiveResultSets };
             _connectionString = ConnectionProperties.ConnectionString;
         }
 
