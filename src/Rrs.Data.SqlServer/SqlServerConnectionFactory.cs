@@ -1,5 +1,6 @@
 ﻿using System.Data;
 using System.Data.SqlClient;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Rrs.Data.SqlServer
@@ -51,13 +52,13 @@ namespace Rrs.Data.SqlServer
             return c;
         }
 
-        public async Task<IDbConnection> OpenConnectionAsync()
+        public async Task<IDbConnection> OpenConnectionAsync(CancellationToken cancellationToken = default)
         {
             SqlConnection c = null;
             try
             {
                 c = new SqlConnection(_connectionString);
-                await c.OpenAsync();
+                await c.OpenAsync(cancellationToken);
             }
             catch
             {
