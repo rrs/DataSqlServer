@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <Version>2.1.0</Version>
-    <TargetFrameworks>net462;netstandard20</TargetFrameworks>
+    <TargetFrameworks>net462;netstandard20;net5.0</TargetFrameworks>
     <Description>Rrs.Data.SqlServer Class Library</Description>
     <Authors>Robert Snipe</Authors>
     <Copyright>Copyright (c) 2018 Robert Snipe</Copyright>
@@ -19,8 +19,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Rrs.Data" Version="2.0.0" />
-    <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
+    <PackageReference Include="Rrs.Data" Version="2.1.0" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
   </ItemGroup>
 
 </Project>
