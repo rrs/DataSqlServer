@@ -1,30 +1,51 @@
-﻿namespace Rrs.Data.SqlServer
+﻿using Microsoft.Data.SqlClient;
+
+namespace Rrs.Data.SqlServer
 {
     public class SqlServerConnectionProperties : IConnectionProperties
     {
+        private SqlConnectionStringBuilder _builder;
+
         public string Server { get; }
         public string Database { get; }
         public string Username { get; }
-        public string Password { get; }
 
-        public bool MultipleActiveResultSets { get; set; }
-
-        public SqlServerConnectionProperties(string server, string database, string username = null, string password = null)
-        {
-            Server = server;
-            Database = database;
-            Username = username;
-            Password = password;
+        public bool MultipleActiveResultSets
+        { 
+            get => _builder.MultipleActiveResultSets;
+            set => _builder.MultipleActiveResultSets = value;
         }
 
-        public string ConnectionString
+        public bool IntegratedSecurity
         {
-            get
+            get => _builder.IntegratedSecurity;
+            set => _builder.IntegratedSecurity = value;
+        }
+
+        public SqlAuthenticationMethod Authentication
+        {
+            get => _builder.Authentication;
+            set => _builder.Authentication = value;
+        }
+
+        public SqlServerConnectionProperties(string server, string database, string username = null, string password = null, bool trustServerCertificate = true)
+        {
+            _builder = new SqlConnectionStringBuilder
             {
-                var mars = MultipleActiveResultSets ? "MultipleActiveResultSets=True;" : "";
-                if (Username == null || Password == null) return $"Data Source={Server};Initial Catalog={Database};Integrated Security=SSPI;{mars}";
-                return $"Data Source={Server};Initial Catalog={Database};UID={Username};pwd={Password};{mars}";
-            }
+                DataSource = server,
+                InitialCatalog = database,
+                TrustServerCertificate = trustServerCertificate,
+                Authentication = username == null && password == null ? SqlAuthenticationMethod.ActiveDirectoryDefault : SqlAuthenticationMethod.NotSpecified
+            };
+
+            if (username != null) _builder.UserID = username;
+            if (password != null) _builder.Password = password;
         }
+
+        public SqlServerConnectionProperties(SqlConnectionStringBuilder builder) => _builder = builder;
+
+        public SqlServerConnectionProperties(string connectionString) => _builder = new SqlConnectionStringBuilder(connectionString);
+
+        public string ConnectionString => _builder.ConnectionString;
     }
 }

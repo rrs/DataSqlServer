@@ -1,5 +1,5 @@
-﻿using System.Data;
-using System.Data.SqlClient;
+﻿using Microsoft.Data.SqlClient;
+using System.Data;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -10,16 +10,7 @@ namespace Rrs.Data.SqlServer
         private readonly string _connectionString;
         public IConnectionProperties ConnectionProperties { get; }
 
-        public SqlServerConnectionFactory(string connectionString)
-        {
-            var connectionStringBuilder = new SqlConnectionStringBuilder(connectionString);
-            ConnectionProperties = new SqlServerConnectionProperties(
-                connectionStringBuilder.DataSource, 
-                connectionStringBuilder.InitialCatalog, 
-                connectionStringBuilder.IntegratedSecurity ? null : connectionStringBuilder.UserID,
-                connectionStringBuilder.IntegratedSecurity ? null : connectionStringBuilder.Password) { MultipleActiveResultSets = connectionStringBuilder.MultipleActiveResultSets };
-            _connectionString = ConnectionProperties.ConnectionString;
-        }
+        public SqlServerConnectionFactory(string connectionString) : this(new SqlServerConnectionProperties(connectionString)) { }
 
         public SqlServerConnectionFactory(IConnectionProperties connectionPropeties)
         {
@@ -27,12 +18,7 @@ namespace Rrs.Data.SqlServer
             _connectionString = ConnectionProperties.ConnectionString;
         }
 
-        public SqlServerConnectionFactory(string server, string database, string username = null, string password = null)
-        {
-            var connectionPropeties = new SqlServerConnectionProperties(server, database, username, password);
-            ConnectionProperties = connectionPropeties;
-            _connectionString = ConnectionProperties.ConnectionString;
-        }
+        public SqlServerConnectionFactory(string server, string database, string username = null, string password = null) : this(new SqlServerConnectionProperties(server, database, username, password)) { }
 
         public IDbConnection NewConnection() => new SqlConnection(_connectionString);
 
