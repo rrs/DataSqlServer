@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <Version>3.1.0</Version>
+    <Version>3.2.0</Version>
     <TargetFrameworks>net462;netstandard20;net5.0</TargetFrameworks>
     <Description>Rrs.Data.SqlServer Class Library</Description>
     <Authors>Robert Snipe</Authors>
@@ -16,7 +16,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Data.SqlClient" Version="5.0.1" />
-    <PackageReference Include="Rrs.Data" Version="2.4.0" />
+    <PackageReference Include="Rrs.Data" Version="2.5.0" />
   </ItemGroup>
 
 </Project>
