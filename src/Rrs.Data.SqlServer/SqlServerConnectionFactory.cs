@@ -20,8 +20,10 @@ namespace Rrs.Data.SqlServer
 
         public SqlServerConnectionFactory(string server, string database, string username = null, string password = null) : this(new SqlServerConnectionProperties(server, database, username, password)) { }
 
-        public IDbConnection NewConnection() => new SqlConnection(_connectionString);
+        public IDbConnectionFactory UseDatabase(string databaseName) => new SqlServerConnectionFactory(new SqlServerConnectionProperties(new SqlConnectionStringBuilder(ConnectionProperties.ConnectionString) { InitialCatalog = databaseName }));
 
+        public IDbConnection NewConnection() => new SqlConnection(_connectionString);
+        
         public IDbConnection OpenConnection()
         {
             SqlConnection c = null;
