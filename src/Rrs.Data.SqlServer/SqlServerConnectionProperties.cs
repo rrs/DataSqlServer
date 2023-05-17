@@ -4,11 +4,11 @@ namespace Rrs.Data.SqlServer
 {
     public class SqlServerConnectionProperties : IConnectionProperties
     {
-        private SqlConnectionStringBuilder _builder;
+        private readonly SqlConnectionStringBuilder _builder;
 
-        public string Server { get; }
-        public string Database { get; }
-        public string Username { get; }
+        public string Server => _builder.DataSource;
+        public string Database => _builder.InitialCatalog;
+        public string Username => _builder.UserID;
 
         public bool MultipleActiveResultSets
         { 
@@ -28,18 +28,19 @@ namespace Rrs.Data.SqlServer
             set => _builder.Authentication = value;
         }
 
-        public SqlServerConnectionProperties(string server, string database, string username = null, string password = null, bool trustServerCertificate = true)
+        public SqlServerConnectionProperties(string server, string database, string username = null, string password = null, bool trustServerCertificate = true, string language = null, string applicationName = null)
         {
             _builder = new SqlConnectionStringBuilder
             {
                 DataSource = server,
                 InitialCatalog = database,
                 TrustServerCertificate = trustServerCertificate,
-                Authentication = username == null && password == null ? SqlAuthenticationMethod.ActiveDirectoryDefault : SqlAuthenticationMethod.NotSpecified
+                Authentication = username == null && password == null ? SqlAuthenticationMethod.ActiveDirectoryDefault : SqlAuthenticationMethod.NotSpecified,
+                UserID = username,
+                Password = password,
+                CurrentLanguage = language,
+                ApplicationName = applicationName
             };
-
-            if (username != null) _builder.UserID = username;
-            if (password != null) _builder.Password = password;
         }
 
         public SqlServerConnectionProperties(SqlConnectionStringBuilder builder) => _builder = builder;
