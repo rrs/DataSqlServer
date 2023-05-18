@@ -36,11 +36,12 @@ namespace Rrs.Data.SqlServer
                 InitialCatalog = database,
                 TrustServerCertificate = trustServerCertificate,
                 Authentication = username == null && password == null ? SqlAuthenticationMethod.ActiveDirectoryDefault : SqlAuthenticationMethod.NotSpecified,
-                UserID = username,
-                Password = password,
-                CurrentLanguage = language,
-                ApplicationName = applicationName
             };
+
+            if (username != null) _builder.UserID = username;
+            if (password != null) _builder.Password = password;
+            if (language != null) _builder.CurrentLanguage = language;
+            if (applicationName != null) _builder.ApplicationName = applicationName;
         }
 
         public SqlServerConnectionProperties(SqlConnectionStringBuilder builder) => _builder = builder;
